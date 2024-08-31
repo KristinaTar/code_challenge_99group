@@ -1,0 +1,147 @@
+@import "global/variables";
+
+
+.app {
+  &Container {
+    position: relative;
+    overflow: hidden;
+    background-color: $darkBg;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  &BgTop {
+    position: absolute;
+    transform: rotate(180deg) translateY(50%);
+    width: 100%;
+
+    @media only screen and (max-width: 640px) {
+      transform: rotate(180deg) scale(1.7) translateY(20%);
+    }
+  }
+
+  &Bg{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(50%);
+
+    @media only screen and (max-width: 640px) {
+      transform: scale(1.7) translateY(20%);
+    }
+  }
+
+  &FormContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.styled-select {
+  &__indicator-separator {
+    display: none;
+    opacity: 0;
+  }
+
+  &__control {
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      border:  1px solid #131313;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &__option {
+    color: saddlebrown;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    cursor: pointer;
+    padding: 12px 0;
+
+    &--is-focused {
+      background: lightgrey !important;
+
+      &:active {
+        background: $greyPrimary !important;
+        outline: none;
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    &--is-selected {
+      background: $greyPrimary !important;
+      font-weight: 700;;
+    }
+  }
+
+  &__menu-list {
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #0000001A;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background: #545454;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #2f2d2d;
+    }
+  }
+
+
+
+}
+
+.form{
+  &Select {
+    width: 500px;
+    height: 50px;
+
+    @media only screen and (max-width: 640px) {
+      width: 280px;
+    }
+  }
+
+
+  &Input {
+    width: 500px;
+    height: 50px;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 18px;
+
+    @media only screen and (max-width: 640px) {
+      width: 280px;
+    }
+  }
+}
+
+label {
+  color:$whitePrimary;
+ text-align: left;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.note {
+  text-align: center;
+  padding-top: 20px;
+  color: $whitePrimary;
+  font-style: italic;
+  z-index: 100;
+}
