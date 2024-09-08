@@ -19,7 +19,7 @@ export function useCurrencies() {
     });
   }, []);
 
-  // preparing function that will calculate prices
+  // preparing object with key as currency name and price as value for easy price access
   const currencyPrices = useMemo(() => {
     const prices: { [currency: string]: number } = {};
 
@@ -35,7 +35,7 @@ export function useCurrencies() {
    * @param currencyIn Currency that will be spent
    * @param currencyOut Currency that will be bought
    * @param amountIn Amount that will be spent
-   * @return Amount that will be received CurrencyOut/CurrencyIn
+   * @return Amount that will be received
    */
   function getAmountOut(
     currencyIn: string,
@@ -50,7 +50,7 @@ export function useCurrencies() {
    * @param currencyIn Currency that will be spent
    * @param currencyOut Currency that will be bought
    * @param amountOut Amount that will be received
-   * @return Amount that will be received CurrencyOut/CurrencyIn
+   * @return Amount that should be spent
    */
   function getAmountIn(
     currencyIn: string,

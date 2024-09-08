@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Select, { SingleValue } from "react-select";
 
 import './App.scss';
@@ -39,10 +39,10 @@ function App() {
     )));
   }, [currencyIn, currencyOut]);
 
-  const selectOptions: SelectItem[] = currenciesData.map((item) => ({
+  const selectOptions: SelectItem[] = useMemo(() => currenciesData.map((item) => ({
     value: item.currency,
     label: item.currency,
-  }));
+  })), [currenciesData]);
 
   return (
     <div className="appContainer">

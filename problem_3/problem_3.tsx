@@ -30,7 +30,8 @@ const blockchainPriority: { [blockchainName: string]: number } = {
 // Since `Props` don't have any additional properties, let's use BoxProps instead
 // We don't need to assign type twice, so we remove type from `props: Props`
 const WalletPage: React.FC<BoxProps> = (props) => {
-  const { children, ...rest } = props;
+  // removed `children` as we don't use this props
+  const { ...rest } = props;
   const balances = useWalletBalances();
   const prices = usePrices();
   // we have missing useStyles, we're accessing `classes.row` later
@@ -42,8 +43,8 @@ const WalletPage: React.FC<BoxProps> = (props) => {
       const balancePriority = blockchainPriority[balance.blockchain];
       // `-99` meant that we don't support blockchain. We will check non-undefined value instead
       // also we combine and simplify statements
-      return balancePriority !== undefined && balance.amount <= 0;
-
+      // also we're filtering only positive balances now since it makes more sense
+      return balancePriority !== undefined && balance.amount > 0;
     }).sort((lhs: WalletBalance, rhs: WalletBalance) => {
       // we simplify sorting logic
       return blockchainPriority[rhs.blockchain] - blockchainPriority[lhs.blockchain];
